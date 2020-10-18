@@ -93,7 +93,7 @@ char* createDir() {
 
     // mkdir and set permissions (rwxr-x---)
     mkdir(newDir, 0750);
-    printf("Created directory with name %s\n", newDir);
+    printf("Created directory with name %s\n\n", newDir);
 
     return newDir;
 }
@@ -191,10 +191,10 @@ char* findSmallest() {
 void subMenu() {
     int choice = 0;
     while (choice == 0) {
-        printf("Which file do you want to process?\n");
+        printf("\nWhich file do you want to process?\n");
         printf("Enter 1 to pick the largest file\n");
         printf("Enter 2 to pick the smallest file\n");
-        printf("Enter 3 to specify the name of a file\n");
+        printf("Enter 3 to specify the name of a file\n\n");
         printf("Enter a choice from 1 to 3: ");
         choice = getIntRange(1, 3);
     }
@@ -203,7 +203,11 @@ void subMenu() {
     {
     case 1:
         // for testing
-        printf("You want to process the largest file\n");
+        //printf("You want to process the largest file\n");
+        // Would not let me declare a new variable without a statement first
+        // hence the empty statement below. If time permits I will try to 
+        // figure out a better way to do this.
+        ;
         char* largestFile = findLargest();
         printf("Now processing the chosen file named %s\n", largestFile);
         free(largestFile);
@@ -214,10 +218,13 @@ void subMenu() {
         break;
     case 2:
         // for testing
-        printf("You want to process the smallest file\n");
+        //printf("You want to process the smallest file\n");
+        ;
         char* smallestFile = findSmallest();
         printf("Now processing the chosen file named %s\n", smallestFile);
         free(smallestFile);
+
+        processFile();
         mainMenu();
         break;
     case 3:
@@ -231,7 +238,7 @@ void subMenu() {
 void mainMenu() {
     int choice = 0;
     while (choice == 0) {
-        printf("1. Select file to process\n");
+        printf("\n1. Select file to process\n");
         printf("2. Exit the program\n\n");
         printf("Enter a choice 1 or 2: ");
         choice = getIntRange(1, 2);
